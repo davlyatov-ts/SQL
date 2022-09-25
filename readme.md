@@ -33,12 +33,14 @@ _______________________________________
 - в БД test_db создайте таблицу orders и clients (спeцификация таблиц ниже)
 - предоставьте привилегии на все операции пользователю test-adminuser на таблицы БД test_db
 - создайте пользователя test-simple-user
-- предоставьте пользователю test-simple-user права на SELECT/INSERT/UPDATE/DELETE данных таблиц БД test_db
+- предоставьте пользователю test-simple-user права на SELECT/INSERT/UPDATE/DELETE данных таблиц БД test_db<br>
+
 Таблица orders:<br>
 
 - id (serial primary key)
 - наименование (string)
 - цена (integer)
+
 Таблица clients:
 
 - id (serial primary key)
