@@ -51,3 +51,16 @@ _______________________________________
 Приведите:
 
 - итоговый список БД после выполнения пунктов выше,
+
+```
+test_db-# \d
+                  List of relations
+ Schema |      Name      |   Type   |      Owner      
+--------+----------------+----------+-----------------
+ public | clients        | table    | test-admin-user
+ public | clients_id_seq | sequence | test-admin-user
+ public | orders         | table    | test-admin-user
+ public | orders_id_seq  | sequence | test-admin-user
+(4 rows)
+```
+_______________________________________
