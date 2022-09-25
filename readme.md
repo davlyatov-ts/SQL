@@ -117,5 +117,22 @@ test_db=#
 ```
 select * from pg_catalog.pg_user
 ```
+- список пользователей с правами над таблицами test_db<br>
+
+```
+test_db-# \dp
+                                                Access privileges
+ Schema |      Name      |   Type   |              Access privileges              | Column privileges | Policies 
+--------+----------------+----------+---------------------------------------------+-------------------+----------
+ public | clients        | table    | "test-admin-user"=arwdDxt/"test-admin-user"+|                   | 
+        |                |          | "test-simple-user"=arwd/"test-admin-user"   |                   | 
+ public | clients_id_seq | sequence |                                             |                   | 
+ public | orders         | table    | "test-admin-user"=arwdDxt/"test-admin-user"+|                   | 
+        |                |          | "test-simple-user"=arwd/"test-admin-user"   |                   | 
+ public | orders_id_seq  | sequence |                                             |                   | 
+(4 rows)
+```
+
+
 
 
