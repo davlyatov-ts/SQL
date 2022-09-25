@@ -197,6 +197,20 @@ update clients set client_order = 4 where client_lastname = 'Петров Пет
 update clients set client_order = 5 where client_lastname = 'Иоганн Себастьян Бах'
 ```
 
+Приведите SQL-запрос для выдачи всех пользователей, которые совершили заказ, а также вывод данного запроса.<br>
+
+```
+select * from clients where client_order is not null
+
+id|client_lastname     |client_country      |client_order
+--+--------------------+--------------------+------------
+ 1|Иванов Иван Иванович|USA                 |           3
+ 2|Петров Петр Петрович|Canada              |           4
+ 3|Иоганн Себастьян Бах|Japan               |           5
+```
+
+Подсказк - используйте директиву ``UPDATE``.
+
 
 
 
