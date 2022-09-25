@@ -63,4 +63,51 @@ test_db-# \d
  public | orders_id_seq  | sequence | test-admin-user
 (4 rows)
 ```
+- описание таблиц (describe)
+
+```
+select table_name, column_name, data_type from information_schema.columns where table_name = 'orders'
+Name       |Value  |
+-----------+-------+
+table_name |orders |
+column_name|id     |
+data_type  |integer|
+
+select table_name, column_name, data_type from information_schema.columns where table_name = 'clients'
+Name       |Value  |
+-----------+-------+
+table_name |clients|
+column_name|id     |
+data_type  |integer|
+=====================================================================================================================================================
+test_db=# \d+ orders
+                                                     Table "public.orders"
+   Column   |     Type      | Collation | Nullable |              Default               | Storage  | Stats target | Description 
+------------+---------------+-----------+----------+------------------------------------+----------+--------------+-------------
+ id         | integer       |           | not null | nextval('orders_id_seq'::regclass) | plain    |              | 
+ order_name | character(20) |           |          |                                    | extended |              | 
+ order_cost | integer       |           |          |                                    | plain    |              | 
+Indexes:
+    "orders_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "clients" CONSTRAINT "clients_client_order_fkey" FOREIGN KEY (client_order) REFERENCES orders(id)
+Access method: heap
+=====================================================================================================================================================
+test_db=# \d+ clients
+                                                        Table "public.clients"
+     Column      |     Type      | Collation | Nullable |               Default               | Storage  | Stats target | Description 
+-----------------+---------------+-----------+----------+-------------------------------------+----------+--------------+-------------
+ id              | integer       |           | not null | nextval('clients_id_seq'::regclass) | plain    |              | 
+ client_lastname | character(20) |           |          |                                     | extended |              | 
+ client_country  | character(20) |           |          |                                     | extended |              | 
+ client_order    | integer       |           |          |                                     | plain    |              | 
+Indexes:
+    "clients_pkey" PRIMARY KEY, btree (id)
+    "country" UNIQUE, btree (client_country)
+Foreign-key constraints:
+    "clients_client_order_fkey" FOREIGN KEY (client_order) REFERENCES orders(id)
+Access method: heap
+
+test_db=# 
+=====================================================================================================================================================
 _______________________________________
